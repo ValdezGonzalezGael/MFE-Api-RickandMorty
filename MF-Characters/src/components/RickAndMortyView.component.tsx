@@ -23,8 +23,10 @@ import {
   getStatusChipProps,
   statusOptions,
 } from "../utils/rickAndMorty.utils";
-import ModalCharacterDetail from "./ModalCharacterDetail.component";
-const Ejemplo = React.lazy(() => import("CharacterDetail/Ejemplo"));
+
+const ModalCharacterDetail = React.lazy(
+  () => import("CharacterDetail/ModalCharacterDetail"),
+);
 
 export default function RickAndMortyView() {
   const [characters, setCharacters] = useState<CharacterItem[]>([]);
@@ -127,6 +129,57 @@ export default function RickAndMortyView() {
     setSelectedOrigin("");
   };
 
+  const filterInputClassNames = {
+    base: "w-full",
+    mainWrapper: "bg-transparent",
+    inputWrapper: [
+      "!bg-[#05232c]",
+      "border",
+      "border-[#0b3b46]",
+      "shadow-none",
+      "transition-all",
+      "duration-200",
+      "hover:border-[#12d98d]/70",
+      "group-data-[focus=true]:border-[#19e68c]",
+      "group-data-[focus=true]:shadow-[0_0_0_2px_rgba(25,230,140,0.18),0_0_18px_rgba(25,230,140,0.22)]",
+      "data-[hover=true]:border-[#19e68c]/80",
+    ].join(" "),
+    innerWrapper: "bg-transparent !bg-transparent",
+    input: "bg-transparent !bg-transparent text-white placeholder:text-[#7bb7b7]",
+  };
+
+  const filterAutocompleteClassNames = {
+    base: "w-full",
+    mainWrapper: "bg-transparent",
+    selectorButton: "text-[#7ee7c1]",
+    clearButton: "text-[#7ee7c1]",
+    popoverContent:
+      "bg-[#031b23] border border-[#19e68c]/30 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]",
+    listboxWrapper: "bg-[#031b23]",
+    listbox: "bg-[#031b23]",
+  };
+
+  const filterAutocompleteInputProps = {
+    classNames: {
+      base: "w-full",
+      mainWrapper: "bg-transparent",
+      inputWrapper: [
+        "!bg-[#05232c]",
+        "border",
+        "border-[#0b3b46]",
+        "shadow-none",
+        "transition-all",
+        "duration-200",
+        "hover:border-[#12d98d]/70",
+        "group-data-[focus=true]:border-[#19e68c]",
+        "group-data-[focus=true]:shadow-[0_0_0_2px_rgba(25,230,140,0.18),0_0_18px_rgba(25,230,140,0.22)]",
+        "data-[hover=true]:border-[#19e68c]/80",
+      ].join(" "),
+      innerWrapper: "bg-transparent !bg-transparent",
+      input: "bg-transparent !bg-transparent text-white placeholder:text-[#7bb7b7]",
+    },
+  };
+
   return (
     <section className="min-h-screen w-full bg-[#02131a] px-4 py-6 md:px-8">
       <div className="mx-auto max-w-[1400px]">
@@ -142,8 +195,6 @@ export default function RickAndMortyView() {
           </p>
         </div>
 
-        <Ejemplo />
-
         <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-cyan-500/15 bg-[#031b23] px-4 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
           <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
             <div className="w-full">
@@ -153,12 +204,8 @@ export default function RickAndMortyView() {
                 size="lg"
                 radius="lg"
                 placeholder="Buscar personaje..."
-                startContent={<Search size={20} className="text-cyan-200/50" />}
-                classNames={{
-                  inputWrapper:
-                    "bg-[#032733] border border-cyan-500/20 shadow-none hover:border-cyan-400/30 data-[focus=true]:border-cyan-400/40",
-                  input: "text-base text-white placeholder:text-cyan-100/40",
-                }}
+                startContent={<Search size={20} className="text-[#7ee7c1]" />}
+                classNames={filterInputClassNames}
               />
             </div>
 
@@ -173,31 +220,20 @@ export default function RickAndMortyView() {
                 size="lg"
                 radius="lg"
                 placeholder="Filtrar por especie"
-                startContent={<Dna size={18} className="text-cyan-200/50" />}
+                startContent={<Dna size={18} className="text-[#7ee7c1]" />}
                 inputValue={selectedSpecies}
                 onInputChange={(value) => {
                   if (!value) {
                     setSelectedSpecies("");
                   }
                 }}
-                classNames={{
-                  base: "w-full",
-                  selectorButton: "text-cyan-200/50",
-                  popoverContent:
-                    "bg-[#031b23] border border-cyan-500/20 text-white",
-                }}
-                inputProps={{
-                  classNames: {
-                    inputWrapper:
-                      "bg-[#032733] border border-cyan-500/20 shadow-none hover:border-cyan-400/30 data-[focus=true]:border-cyan-400/40",
-                    input: "text-white placeholder:text-cyan-100/40",
-                  },
-                }}
+                classNames={filterAutocompleteClassNames}
+                inputProps={filterAutocompleteInputProps}
               >
                 {(item) => (
                   <AutocompleteItem
                     key={item.key}
-                    className="text-white data-[hover=true]:bg-cyan-500/10"
+                    className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
                   >
                     {item.label}
                   </AutocompleteItem>
@@ -216,31 +252,20 @@ export default function RickAndMortyView() {
                 size="lg"
                 radius="lg"
                 placeholder="Filtrar por origen"
-                startContent={<MapPin size={18} className="text-cyan-200/50" />}
+                startContent={<MapPin size={18} className="text-[#7ee7c1]" />}
                 inputValue={selectedOrigin}
                 onInputChange={(value) => {
                   if (!value) {
                     setSelectedOrigin("");
                   }
                 }}
-                classNames={{
-                  base: "w-full",
-                  selectorButton: "text-cyan-200/50",
-                  popoverContent:
-                    "bg-[#031b23] border border-cyan-500/20 text-white",
-                }}
-                inputProps={{
-                  classNames: {
-                    inputWrapper:
-                      "bg-[#032733] border border-cyan-500/20 shadow-none hover:border-cyan-400/30 data-[focus=true]:border-cyan-400/40",
-                    input: "text-white placeholder:text-cyan-100/40",
-                  },
-                }}
+                classNames={filterAutocompleteClassNames}
+                inputProps={filterAutocompleteInputProps}
               >
                 {(item) => (
                   <AutocompleteItem
                     key={item.key}
-                    className="text-white data-[hover=true]:bg-cyan-500/10"
+                    className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
                   >
                     {item.label}
                   </AutocompleteItem>
