@@ -1,5 +1,5 @@
 import { CharacterItem } from "../models/specific/IRickAndMortyView";
-import { UiFilterStatus } from "../services/services/ServicioRickAndMorty.service";
+import { UiFilterStatus } from "../services/ServicioRickAndMorty.service";
 
 export const statusOptions: UiFilterStatus[] = [
   "Todos",

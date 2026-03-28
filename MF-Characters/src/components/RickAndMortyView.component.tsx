@@ -16,7 +16,7 @@ import {
   getCharacters,
   mapUiStatusToApiStatus,
   UiFilterStatus,
-} from "../services/services/ServicioRickAndMorty.service";
+} from "../services/ServicioRickAndMorty.service";
 import {
   formatGender,
   getFilterButtonClass,

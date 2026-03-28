@@ -1,4 +1,4 @@
-import { ApiResponse } from "../../models/specific/IRickAndMortyView";
+import { ApiResponse } from "../models/specific/IRickAndMortyView";
 import ApiRickAndMorty from "./endpointRickAndMorty.service";
 
 export type CharacterStatus = "alive" | "dead" | "unknown" | "";
