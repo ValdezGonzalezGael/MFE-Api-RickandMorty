@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 //@ts-ignore
 const ModalCharacterDetail = React.lazy(() => import("Characters/RickAndMortyView"),);
 

@@ -2,13 +2,13 @@ import {
   CharacterDetail,
   EpisodeDetail,
 } from "../models/specific/IRickAndMortyDetail";
+import ApiRickAndMorty from "./EndpointRickAndMortyDetail.service";
 
-const API_BASE_URL = "https://rickandmortyapi.com/api";
 
 export const getCharacterDetail = async (
   characterId: number,
 ): Promise<CharacterDetail> => {
-  const response = await fetch(`${API_BASE_URL}/character/${characterId}`);
+  const response = await fetch(`${ApiRickAndMorty.Api}/character/${characterId}`);
 
   if (!response.ok) {
     throw new Error("No fue posible obtener el detalle del personaje.");
@@ -37,7 +37,7 @@ export const getEpisodesByUrls = async (
   }
 
   const response = await fetch(
-    `${API_BASE_URL}/episode/${episodeIds.join(",")}`,
+    `${ApiRickAndMorty.Api}/episode/${episodeIds.join(",")}`,
   );
 
   if (!response.ok) {
