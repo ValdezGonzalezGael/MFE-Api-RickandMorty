@@ -1,19 +1,24 @@
 {
-  "name": "arquetipo_mfe",
+  "name": "mf_characterdetail",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+"scripts": {
+    "dev": "vite --mode development",
+    "build:dev": "tsc -b && vite build --mode development",
+    "build:qa": "tsc -b && vite build --mode qa",
+    "build": "tsc -b && vite build --mode production",
+    "preview:dev": "vite preview --mode development",
+    "preview:qa": "vite preview --mode qa",
     "preview": "vite preview",
+    "lint": "eslint .",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
     "framer-motion": "^11.11.17",
+    "lucide-react": "^1.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

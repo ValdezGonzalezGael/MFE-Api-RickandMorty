@@ -2,7 +2,6 @@
 Microfrontends de la api de Rick and Morty
 
 *Guía de instalación para levantar el proyecto---------------------------------------------------------------------
-
 1.- En los microFrontends de MF-CharacterDetail, MF-Character y MF-Contenedor instala las dependencias de node.
 en su terminal correspondiente
 #npm i ó npm install
