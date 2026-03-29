@@ -26,7 +26,9 @@ import {
 } from "../utils/rickAndMorty.utils";
 
 //@ts-ignore
-const ModalCharacterDetail = React.lazy(() => import("CharacterDetail/ModalCharacterDetail"),);
+const ModalCharacterDetail = React.lazy(
+  () => import("CharacterDetail/ModalCharacterDetail"),
+);
 
 export default function RickAndMortyView() {
   const [characters, setCharacters] = useState<CharacterItem[]>([]);
@@ -145,14 +147,15 @@ export default function RickAndMortyView() {
       "data-[hover=true]:border-[#19e68c]/80",
     ].join(" "),
     innerWrapper: "bg-transparent !bg-transparent",
-    input: "bg-transparent !bg-transparent text-white placeholder:text-[#7bb7b7]",
+    input:
+      "!text-[#7bb7b7] placeholder:!text-[#7bb7b7] caret-[#7bb7b7] bg-transparent !bg-transparent",
   };
 
   const filterAutocompleteClassNames = {
     base: "w-full",
     mainWrapper: "bg-transparent",
-    selectorButton: "text-[#7ee7c1]",
-    clearButton: "text-[#7ee7c1]",
+    selectorButton: "!text-[#7ee7c1]",
+    clearButton: "!text-[#7ee7c1]",
     popoverContent:
       "bg-[#031b23] border border-[#19e68c]/30 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)]",
     listboxWrapper: "bg-[#031b23]",
@@ -176,7 +179,8 @@ export default function RickAndMortyView() {
         "data-[hover=true]:border-[#19e68c]/80",
       ].join(" "),
       innerWrapper: "bg-transparent !bg-transparent",
-      input: "bg-transparent !bg-transparent text-white placeholder:text-[#7bb7b7]",
+      input:
+        "!text-[#7bb7b7] placeholder:!text-[#7bb7b7] caret-[#7bb7b7] bg-transparent !bg-transparent",
     },
   };
 
