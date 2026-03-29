@@ -196,82 +196,76 @@ export default function RickAndMortyView() {
         </div>
 
         <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-cyan-500/15 bg-[#031b23] px-4 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
-            <div className="w-full">
-              <Input
-                value={search}
-                onValueChange={handleSearchChange}
-                size="lg"
-                radius="lg"
-                placeholder="Buscar personaje..."
-                startContent={<Search size={20} className="text-[#7ee7c1]" />}
-                classNames={filterInputClassNames}
-              />
-            </div>
+          <div className="flex justify-between gap-4">
+            <Input
+              value={search}
+              onValueChange={handleSearchChange}
+              size="lg"
+              radius="lg"
+              placeholder="Buscar personaje..."
+              startContent={<Search size={20} className="text-[#7ee7c1]" />}
+              classNames={filterInputClassNames}
+            />
 
-            <div className="w-full">
-              <Autocomplete
-                selectedKey={selectedSpecies || null}
-                onSelectionChange={(key) => setSelectedSpecies(String(key ?? ""))}
-                defaultItems={speciesOptions.map((item) => ({
-                  key: item,
-                  label: item,
-                }))}
-                size="lg"
-                radius="lg"
-                placeholder="Filtrar por especie"
-                startContent={<Dna size={18} className="text-[#7ee7c1]" />}
-                inputValue={selectedSpecies}
-                onInputChange={(value) => {
-                  if (!value) {
-                    setSelectedSpecies("");
-                  }
-                }}
-                classNames={filterAutocompleteClassNames}
-                inputProps={filterAutocompleteInputProps}
-              >
-                {(item) => (
-                  <AutocompleteItem
-                    key={item.key}
-                    className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
-                  >
-                    {item.label}
-                  </AutocompleteItem>
-                )}
-              </Autocomplete>
-            </div>
+            <Autocomplete
+              selectedKey={selectedSpecies || null}
+              onSelectionChange={(key) => setSelectedSpecies(String(key ?? ""))}
+              defaultItems={speciesOptions.map((item) => ({
+                key: item,
+                label: item,
+              }))}
+              size="lg"
+              radius="lg"
+              placeholder="Filtrar por especie"
+              startContent={<Dna size={18} className="text-[#7ee7c1]" />}
+              inputValue={selectedSpecies}
+              onInputChange={(value) => {
+                if (!value) {
+                  setSelectedSpecies("");
+                }
+              }}
+              classNames={filterAutocompleteClassNames}
+              inputProps={filterAutocompleteInputProps}
+            >
+              {(item) => (
+                <AutocompleteItem
+                  key={item.key}
+                  className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
+                >
+                  {item.label}
+                </AutocompleteItem>
+              )}
+            </Autocomplete>
 
-            <div className="w-full">
-              <Autocomplete
-                selectedKey={selectedOrigin || null}
-                onSelectionChange={(key) => setSelectedOrigin(String(key ?? ""))}
-                defaultItems={originOptions.map((item) => ({
-                  key: item,
-                  label: item,
-                }))}
-                size="lg"
-                radius="lg"
-                placeholder="Filtrar por origen"
-                startContent={<MapPin size={18} className="text-[#7ee7c1]" />}
-                inputValue={selectedOrigin}
-                onInputChange={(value) => {
-                  if (!value) {
-                    setSelectedOrigin("");
-                  }
-                }}
-                classNames={filterAutocompleteClassNames}
-                inputProps={filterAutocompleteInputProps}
-              >
-                {(item) => (
-                  <AutocompleteItem
-                    key={item.key}
-                    className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
-                  >
-                    {item.label}
-                  </AutocompleteItem>
-                )}
-              </Autocomplete>
-            </div>
+            <Autocomplete
+              selectedKey={selectedOrigin || null}
+              onSelectionChange={(key) => setSelectedOrigin(String(key ?? ""))}
+              defaultItems={originOptions.map((item) => ({
+                key: item,
+                label: item,
+              }))}
+              size="lg"
+              radius="lg"
+              placeholder="Filtrar por origen"
+              startContent={<MapPin size={18} className="text-[#7ee7c1]" />}
+              inputValue={selectedOrigin}
+              onInputChange={(value) => {
+                if (!value) {
+                  setSelectedOrigin("");
+                }
+              }}
+              classNames={filterAutocompleteClassNames}
+              inputProps={filterAutocompleteInputProps}
+            >
+              {(item) => (
+                <AutocompleteItem
+                  key={item.key}
+                  className="text-white data-[hover=true]:bg-[#19e68c]/10 data-[selectable=true]:focus:bg-[#19e68c]/10"
+                >
+                  {item.label}
+                </AutocompleteItem>
+              )}
+            </Autocomplete>
           </div>
 
           <div className="flex flex-wrap items-center justify-end gap-3">
@@ -302,7 +296,7 @@ export default function RickAndMortyView() {
 
         {loading ? (
           <div className="flex min-h-[300px] items-center justify-center">
-            <Spinner size="lg" label="Cargando personajes..." />
+            <Spinner size="lg" color="success" label="Cargando personajes..." />
           </div>
         ) : error ? (
           <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-6 text-red-300">
@@ -320,7 +314,7 @@ export default function RickAndMortyView() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-4 gap-6">
               {filteredCharacters.map((character) => {
                 const badge = getStatusChipProps(character.status);
 

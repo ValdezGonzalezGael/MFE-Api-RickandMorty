@@ -226,6 +226,7 @@ export default function ModalCharacterDetail({
                                     <Spinner
                                         size="lg"
                                         label="Cargando detalle del personaje..."
+                                        color="success"
                                     />
                                 </div>
                             ) : error ? (
