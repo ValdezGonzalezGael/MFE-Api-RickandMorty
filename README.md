@@ -17,6 +17,10 @@ NOTA.- Recuerda cambiar la IP por la de tu equipo; de momento la mía es "10.88.
 Recuerda.- Todos los micros tienen que estar levantados y en el contenedor seleccionaras:
 # http://localhost:3000/MF-Contenedor/ (ó) http://10.88.177.249:3000/MF-Contenedor/
 
+Si quieres levantar todos los proyectos en local en lugar de uno por uno utilisa en la terminal el siguiente comand:
+# node project-runner.js 
+NOTA.- De momento solo funcióna para windows 11
+
 *Guía de test con Jest--------------------------------------------------------------------------------------------
 1.- Para observar los test, coloca en cada terminal de cada microfrontend MF-CharacterDetail, MF-Character y MF-Contenedor
 #npm run test
