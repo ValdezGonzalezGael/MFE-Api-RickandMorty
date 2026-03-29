@@ -24,9 +24,8 @@ import {
   statusOptions,
 } from "../utils/rickAndMorty.utils";
 
-const ModalCharacterDetail = React.lazy(
-  () => import("CharacterDetail/ModalCharacterDetail"),
-);
+//@ts-ignore
+const ModalCharacterDetail = React.lazy(() => import("CharacterDetail/ModalCharacterDetail"),);
 
 export default function RickAndMortyView() {
   const [characters, setCharacters] = useState<CharacterItem[]>([]);

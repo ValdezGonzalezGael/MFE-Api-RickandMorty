@@ -1,4 +1,4 @@
 // federation-exposes.ts
 export const componentExposes: Record<string, string> = {
-  RickAndMortyView: "./src/components/RickAndMortyView.component.tsx",
+
 };
